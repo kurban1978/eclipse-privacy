@@ -25,12 +25,12 @@ for part in re.split(r"\n---\n", src):
     sections[m.group(2)] = (m.group(1), html)
 
 tabs = "\n".join(
-    f'      <button role="tab" id="tab-{c}" aria-controls="{c}" '
-    f'aria-selected="false" data-lang="{c}">{name}</button>'
+    f'      <button role="tab" id="tab-{c}" '
+    f'aria-controls="panel-{c}" aria-selected="false" data-lang="{c}">{name}</button>'
     for c, name, _ in LANGS
 )
 panels = "\n".join(
-    f'    <section role="tabpanel" id="{c}" lang="{hl}" aria-labelledby="tab-{c}">\n'
+    f'    <section role="tabpanel" id="panel-{c}" lang="{hl}" aria-labelledby="tab-{c}">\n'
     f"      <h1>{sections[c][0]}</h1>\n{sections[c][1]}\n    </section>"
     for c, _, hl in LANGS
 )
@@ -107,7 +107,7 @@ page = f"""<!doctype html>
         const on = t.dataset.lang === code;
         t.setAttribute("aria-selected", on);
         t.tabIndex = on ? 0 : -1;
-        document.getElementById(t.dataset.lang).hidden = !on;
+        document.getElementById("panel-" + t.dataset.lang).hidden = !on;
         if (on && focus) t.focus();
       }}
       document.documentElement.lang = code;
@@ -122,6 +122,7 @@ page = f"""<!doctype html>
       t.addEventListener("click", () => {{
         history.replaceState(null, "", "#" + t.dataset.lang);
         show(t.dataset.lang);
+        scrollTo(0, 0);
       }});
       t.addEventListener("keydown", (e) => {{
         const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;

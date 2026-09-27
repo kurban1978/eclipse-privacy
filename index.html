@@ -58,11 +58,11 @@
       <div><b>ECLIPSE</b><span>SHADOW · LIGHT</span></div>
     </div>
     <nav role="tablist" aria-label="Language">
-      <button role="tab" id="tab-uz" aria-controls="uz" aria-selected="false" data-lang="uz">O‘zbekcha</button>
-      <button role="tab" id="tab-ru" aria-controls="ru" aria-selected="false" data-lang="ru">Русский</button>
-      <button role="tab" id="tab-en" aria-controls="en" aria-selected="false" data-lang="en">English</button>
+      <button role="tab" id="tab-uz" aria-controls="panel-uz" aria-selected="false" data-lang="uz">O‘zbekcha</button>
+      <button role="tab" id="tab-ru" aria-controls="panel-ru" aria-selected="false" data-lang="ru">Русский</button>
+      <button role="tab" id="tab-en" aria-controls="panel-en" aria-selected="false" data-lang="en">English</button>
     </nav>
-    <section role="tabpanel" id="uz" lang="uz" aria-labelledby="tab-uz">
+    <section role="tabpanel" id="panel-uz" lang="uz" aria-labelledby="tab-uz">
       <h1>Eclipse: Shadow & Light — Maxfiylik siyosati</h1>
 <p><em>Oxirgi yangilanish: 2026-yil 27-sentabr</em></p>
 <p><strong>Eclipse: Shadow &amp; Light</strong> («Ilova») — boshqotirma o‘yini. Ushbu siyosat
@@ -118,7 +118,7 @@ bolalardan shaxsiy ma'lumot to‘plamaydi.</p>
 orqali yozsangiz, xatga ilova versiyasi va telefon modeli qo‘shiladi — ular
 faqat muammoni tushunish uchun ishlatiladi.</p>
     </section>
-    <section role="tabpanel" id="ru" lang="ru" aria-labelledby="tab-ru">
+    <section role="tabpanel" id="panel-ru" lang="ru" aria-labelledby="tab-ru">
       <h1>Eclipse: Shadow & Light — Политика конфиденциальности</h1>
 <p><em>Последнее обновление: 27 сентября 2026 г.</em></p>
 <p><strong>Eclipse: Shadow &amp; Light</strong> («Приложение») — игра-головоломка. Эта политика
@@ -172,7 +172,7 @@ iOS <code>NSUserDefaults</code>) и удаляется вместе с Прил�
 нам» в Приложении, к письму добавятся версия приложения и модель телефона —
 они используются только для того, чтобы разобраться в проблеме.</p>
     </section>
-    <section role="tabpanel" id="en" lang="en" aria-labelledby="tab-en">
+    <section role="tabpanel" id="panel-en" lang="en" aria-labelledby="tab-en">
       <h1>Eclipse: Shadow & Light — Privacy Policy</h1>
 <p><em>Last updated: September 27, 2026</em></p>
 <p><strong>Eclipse: Shadow &amp; Light</strong> (the "App") is a puzzle game. This policy explains
@@ -233,7 +233,7 @@ only to understand the issue.</p>
         const on = t.dataset.lang === code;
         t.setAttribute("aria-selected", on);
         t.tabIndex = on ? 0 : -1;
-        document.getElementById(t.dataset.lang).hidden = !on;
+        document.getElementById("panel-" + t.dataset.lang).hidden = !on;
         if (on && focus) t.focus();
       }
       document.documentElement.lang = code;
@@ -248,6 +248,7 @@ only to understand the issue.</p>
       t.addEventListener("click", () => {
         history.replaceState(null, "", "#" + t.dataset.lang);
         show(t.dataset.lang);
+        scrollTo(0, 0);
       });
       t.addEventListener("keydown", (e) => {
         const d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
