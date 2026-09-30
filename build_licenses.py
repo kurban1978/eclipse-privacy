@@ -142,8 +142,8 @@ page = f"""<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Eclipse: Shadow &amp; Light — Licenses</title>
-  <meta name="description" content="Open source software used in Eclipse: Shadow &amp; Light.">
+  <title>Eclipse: Black &amp; White Blocks — Licenses</title>
+  <meta name="description" content="Open source software used in Eclipse: Black &amp; White Blocks.">
   <style>
     :root {{
       --bg: #faf8ff; --fg: #1d1a2b; --muted: #6b6680; --card: #ffffff;
@@ -201,11 +201,11 @@ page = f"""<!doctype html>
         <circle cx="22" cy="22" r="13" fill="#fff" stroke="#d9d3ea"/>
         <circle cx="19.9" cy="23.3" r="12.6" fill="#171126"/>
       </svg>
-      <div><b>ECLIPSE</b><span>SHADOW · LIGHT</span></div>
+      <div><b>ECLIPSE</b><span>BLACK · WHITE</span></div>
     </div>
     <h1>Licenses</h1>
-    <p class="lead">Eclipse: Shadow &amp; Light is built with {total} open source components.
-    Below they are grouped by license. Last updated {date.today():%-d %B %Y}.</p>
+    <p class="lead">Eclipse: Black &amp; White Blocks is built with {total} open source components.
+    Below they are grouped by license. Last updated {date.today().day} {date.today():%B %Y}.</p>
     <nav>{"".join(toc)}</nav>
     {"".join(sections)}
   </main>
